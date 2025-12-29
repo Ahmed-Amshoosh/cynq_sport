@@ -1,0 +1,2679 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYNQ Sport Agency - نخبة المواهب الرياضية</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Poppins:wght@300;400;500;600;700&display=arabic" rel="stylesheet">
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <style>
+        :root {
+            --primary: #0c1a32;
+            --secondary: #e6b02e;
+            --accent: #1a3a6c;
+            --dark: #0a1120;
+            --light: #f8f9fa;
+            --success: #28a745;
+            --warning: #ffc107;
+            --danger: #dc3545;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        /* عرض السكرول */
+        ::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        /* خلفية السكرول */
+        ::-webkit-scrollbar-track {
+            background: #656512;
+            border-radius: 10px;
+        }
+
+        /* مقبض السكرول */
+        ::-webkit-scrollbar-thumb {
+            background: #E6B02E;
+            border-radius: 10px;
+        }
+
+        /* عند المرور بالماوس */
+        ::-webkit-scrollbar-thumb:hover {
+            background: #d19d29;
+        }
+
+
+        @font-face {
+            font-family: "IBM Plex Sans Arabic";
+            font-style: normal;
+            font-weight: 400;
+            src: url("../fonts/IBMPLEXSANSARABIC-LIGHT.TTF") format("truetype");
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: "IBM Plex Sans Arabic";
+            font-style: normal;
+            font-weight: 700;
+            src: url("../fonts/IBMPLEXSANSARABIC-BOLD.TTF") format("truetype");
+            font-display: swap;
+        }
+
+        html, body {
+            font-family: "IBM Plex Sans Arabic", system-ui, -apple-system, "Segoe UI", sans-serif;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        strong, b,
+        h1, h2, h3, h4, h5, h6,
+        .fw-bold {
+            font-weight: 700;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c101a 0%, #0a1120 100%);
+            color: #e9ecef;
+            overflow-x: hidden;
+            position: relative;
+            font-weight: 400;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(26, 58, 108, 0.1) 0%, rgba(12, 26, 50, 0.4) 100%);
+            z-index: -1;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(12, 26, 50, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            width: 200px;
+        }
+        .navbar-brand img{
+            width: 100%;
+        }
+
+
+        .nav-link {
+            color: rgba(233, 236, 239, 0.85) !important;
+            font-weight: 600;
+            margin: 0 8px;
+            position: relative;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--secondary) !important;
+        }
+
+        .nav-link:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 5rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+            background: linear-gradient(90deg, #fff 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 650px;
+        }
+
+        .highlight-text {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 30px;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--secondary);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 300;
+            opacity: 0.85;
+            margin-top: 0.3rem;
+        }
+
+        .cta-button {
+            background: linear-gradient(90deg, var(--secondary) 0%, #f0c64e 100%);
+            color: var(--dark);
+            font-weight: 700;
+            padding: 0.8rem 2.2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 15px rgba(230, 176, 46, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(230, 176, 46, 0.6);
+        }
+
+        .cta-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Section Styling */
+        .section-title-container {
+            text-align: center;
+            margin: 3.5rem 0 2rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 50%;
+            transform: translateX(50%);
+            width: 70px;
+            height: 3px;
+            background: var(--secondary);
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            color: rgba(233, 236, 239, 0.7);
+            font-size: 1.1rem;
+            margin-top: 10px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: rgba(18, 28, 45, 0.7);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .value-card {
+            background: rgba(12, 26, 50, 0.6);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(230, 176, 46, 0.05);
+            height: 100%;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(230, 176, 46, 0.2);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, rgba(26, 58, 108, 0.8) 0%, rgba(12, 26, 50, 0.9) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 1.8rem;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+        .value-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .value-desc {
+            color: rgba(233, 236, 239, 0.85);
+            line-height: 1.7;
+        }
+
+        /* Player Cards - Modern 3D Flip Design */
+        .player-container {
+            perspective: 1000px;
+            margin: 3rem 0;
+        }
+
+        .player-card {
+            width: 100%;
+            height: 480px;
+            position: relative;
+            margin-bottom: 2rem;
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border: 2px solid var(--secondary);
+        }
+
+        .card-back {
+            background: linear-gradient(135deg, var(--dark) 0%, #121b2d 100%);
+            transform: rotateY(180deg);
+            padding: 2rem;
+            text-align: right;
+            direction: rtl;
+            overflow-y: auto;
+        }
+
+        .player-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .player-img-container {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            background: rgba(18, 28, 45, 0.3);
+            border: 4px solid var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .player-placeholder {
+            font-size: 5rem;
+            color: rgba(230, 176, 46, 0.3);
+        }
+
+        .player-name {
+            font-size: 2.1rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 0.3rem;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .player-position {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .player-stats {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: rgba(12, 26, 50, 0.7);
+            border-radius: 12px;
+            padding: 1rem;
+            width: 90px;
+            border: 1px solid rgba(230, 176, 46, 0.2);
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: rgba(233, 236, 239, 0.7);
+            margin-top: 0.2rem;
+        }
+
+        .honors-section, .social-section {
+            margin: 1.5rem 0;
+        }
+
+        .section-label {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .honors-list, .endorsements-list {
+            padding-right: 1.5rem;
+        }
+
+        .honors-list li, .endorsements-list li {
+            margin-bottom: 0.6rem;
+            color: rgba(233, 236, 239, 0.85);
+            font-size: 0.95rem;
+            position: relative;
+            padding-right: 1.2rem;
+        }
+
+        .honors-list li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+            position: absolute;
+            right: 0;
+        }
+
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .social-item {
+            background: rgba(18, 28, 45, 0.6);
+            border-radius: 10px;
+            padding: 0.8rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .social-item:hover {
+            transform: translateY(-3px);
+            border-color: rgba(230, 176, 46, 0.3);
+        }
+
+        .social-count {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.3rem;
+        }
+
+        .social-platform {
+            font-size: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .social-icon {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .instagram { color: #e1306c; }
+        .twitter { color: #1da1f2; }
+        .tiktok { color: #000; background: linear-gradient(45deg, #f03593, #f5d742); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .facebook { color: #4267B2; }
+
+        /* Filters */
+        .filters-container {
+            background: rgba(12, 26, 50, 0.7);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 3rem 0;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .filter-btn {
+            background: rgba(18, 28, 45, 0.6);
+            border: 1px solid rgba(230, 176, 46, 0.2);
+            color: rgba(233, 236, 239, 0.85);
+            font-weight: 600;
+            margin: 0.3rem;
+            border-radius: 50px;
+            padding: 0.6rem 1.4rem;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--secondary);
+            color: var(--dark);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, var(--dark) 0%, #080e17 100%);
+            padding: 4rem 0 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.6rem;
+        }
+
+        .footer-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: rgba(233, 236, 239, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+            font-size: 0.95rem;
+            font-weight: bold;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            transform: translateX(3px);
+        }
+
+        .social-footer {
+            display: flex;
+            gap: 15px;
+            margin-top: 1.5rem;
+        }
+
+        .social-footer-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(18, 28, 45, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 176, 46, 0.2);
+        }
+
+        .social-footer-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            color: rgba(233, 236, 239, 0.5);
+            font-size: 0.95rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(233, 236, 239, 0.1);
+        }
+
+        /* Category Tags */
+        .category-tag {
+            display: inline-block;
+            background: rgba(26, 58, 108, 0.3);
+            color: var(--secondary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 0.2rem;
+            font-weight: 500;
+            border: 1px solid rgba(230, 176, 46, 0.2);
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--secondary);
+            color: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .player-card {
+                height: 520px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .stats-container {
+                gap: 15px;
+            }
+
+            .stat-number {
+                font-size: 2.1rem;
+            }
+
+            .player-card {
+                height: 580px;
+            }
+
+            .nav-link {
+                margin: 0 4px;
+                font-size: 0.85rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .values-section {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-section {
+                height: auto;
+                padding: 8rem 0 3rem;
+            }
+
+            .player-img-container {
+                width: 150px;
+                height: 150px;
+            }
+
+            .player-card {
+                height: 650px;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .navbar-toggler {
+                border-color: var(--secondary);
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(230, 176, 46, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+            }
+        }
+        .footer_logo{
+            width: 250px;
+            margin-bottom: 30px;
+        }
+        .footer_logo img{
+            width: 100%;
+        }
+    </style>
+    <style>
+        .about-bg-shape {
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, rgba(230, 176, 46, 0.15) 0%, rgba(26, 58, 108, 0.1) 100%);
+            border-radius: 20px;
+            z-index: -1;
+            transform: rotate(15deg);
+        }
+
+        .about-icon-container {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--secondary);
+        }
+
+        .value-card {
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-color: var(--secondary);
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(230, 176, 46, 0.15) 0%, transparent 70%);
+            transform: rotate(30deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .value-card:hover::before {
+            opacity: 1;
+        }
+
+        .services-container {
+            background: linear-gradient(135deg, rgba(12, 26, 50, 0.9) 0%, rgba(26, 58, 108, 0.85) 100%);
+            border: 1px solid rgba(230, 176, 46, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-item {
+            background: rgba(18, 28, 45, 0.7);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .service-item:hover {
+            background: rgba(26, 58, 108, 0.9);
+            transform: translateY(-5px);
+            border-color: var(--secondary);
+        }
+
+        .about-decoration-1, .about-decoration-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .about-decoration-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(230, 176, 46, 0.1) 0%, transparent 70%);
+            top: 10%;
+            left: 5%;
+        }
+
+        .about-decoration-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(26, 58, 108, 0.15) 0%, transparent 70%);
+            bottom: 10%;
+            right: 5%;
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, rgba(18, 28, 45, 0.7) 0%, rgba(12, 26, 50, 0.9) 100%);
+        }
+    </style>
+    <style>
+        .team-badge {
+            background: rgba(230, 176, 46, 0.15);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .team-mission {
+            border: 1px solid rgba(230, 176, 46, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mission-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 10% 20%, rgba(26, 58, 108, 0.2) 0%, transparent 40%);
+            z-index: 0;
+        }
+
+        .mission-stats {
+            margin-top: 20px;
+        }
+
+        .stat-item {
+            min-width: 120px;
+            border-radius: 12px;
+            background: rgba(18, 28, 45, 0.6);
+        }
+
+        .team-category-card {
+            border: 1px solid rgba(230, 176, 46, 0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .team-category-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: rgba(230, 176, 46, 0.3);
+        }
+
+        .category-header {
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .team-features li i {
+            font-size: 0.8rem;
+        }
+
+        .team-member-card {
+            border: 1px solid rgba(230, 176, 46, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            border-color: rgba(230, 176, 46, 0.3);
+        }
+
+        .member-header {
+            height: 220px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+        }
+
+        .member-img-placeholder {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(230, 176, 46, 0.3);
+        }
+
+        .member-badge {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(18, 28, 45, 0.7);
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .team-cta {
+            border: 1px solid rgba(230, 176, 46, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-decoration-1, .team-decoration-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .team-decoration-1 {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(26, 58, 108, 0.1) 0%, transparent 70%);
+            top: 5%;
+            left: 2%;
+        }
+
+        .team-decoration-2 {
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(230, 176, 46, 0.08) 0%, transparent 70%);
+            bottom: 5%;
+            right: 3%;
+        }
+    </style>
+    <style>
+        .contact-section {
+            background: linear-gradient(135deg, #080e17 0%, #0a1120 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-badge {
+            background: rgba(230, 176, 46, 0.15);
+            border: 1px solid var(--secondary);
+            color: var(--secondary);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .contact-container {
+            border: 1px solid rgba(230, 176, 46, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            height: 100%;
+        }
+
+        .contact-map-container {
+            height: 280px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            height: 100%;
+            background: linear-gradient(135deg, #1a2a4a 0%, #0c1a32 100%);
+            position: relative;
+            border-radius: 12px 12px 0 0;
+            overflow: hidden;
+        }
+
+        .map-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 2;
+            padding: 2rem;
+        }
+
+        .location-pin {
+            font-size: 3rem;
+            color: var(--secondary);
+            animation: pulse 2s infinite;
+            text-align: right;
+        }
+
+        @keyframes pulse {
+            0% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .map-info h4 {
+            font-size: 1.5rem;
+        }
+
+        .map-gradient-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(26, 58, 108, 0.2) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .contact-card {
+            transition: all 0.3s ease;
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(230, 176, 46, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-icon {
+            min-width: 60px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .opening-hours ul {
+            padding-right: 15px;
+        }
+
+        .opening-hours ul li {
+            position: relative;
+            padding-right: 15px;
+        }
+
+        .opening-hours ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        .social-links-container {
+            border: 1px solid rgba(230, 176, 46, 0.1);
+        }
+
+        .social-media-icon {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--secondary);
+            position: relative;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-media-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: var(--secondary) !important;
+            color: var(--dark) !important;
+            box-shadow: 0 5px 15px rgba(230, 176, 46, 0.4);
+        }
+
+        .icon-tooltip {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark);
+            color: white;
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .social-media-icon:hover .icon-tooltip {
+            opacity: 1;
+            visibility: visible;
+            bottom: -35px;
+        }
+
+        .contact-form-container {
+            border: 1px solid rgba(230, 176, 46, 0.15);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            height: 100%;
+        }
+
+        .form-header {
+            border-bottom: 2px solid var(--secondary);
+        }
+
+        .form-control-lg {
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control-lg:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 0.25rem rgba(230, 176, 46, 0.25);
+        }
+
+        .input-group-text {
+            border-radius: 8px 0 0 8px !important;
+            font-weight: bold;
+        }
+
+        .form-select-lg {
+            padding: 1rem 3rem 1rem 1.5rem;
+            font-size: 1.1rem;
+            background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23e6b02e' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: left 1.5rem center;
+            background-size: 16px 12px;
+        }
+
+        .form-check-label a {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .form-check-label a:hover {
+            color: #f0c64e;
+        }
+
+        .response-time {
+            border: 1px solid rgba(230, 176, 46, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-cta {
+            border: 1px solid rgba(230, 176, 46, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .bg-gradient {
+            background: linear-gradient(135deg, rgba(18, 28, 45, 0.7) 0%, rgba(12, 26, 50, 0.9) 100%);
+        }
+
+        .bg-dark-light {
+            background: rgba(18, 28, 45, 0.6);
+        }
+
+        .bg-primary-light {
+            background: rgba(26, 58, 108, 0.3);
+        }
+
+        .border-primary-light {
+            border-color: rgba(26, 58, 108, 0.5) !important;
+        }
+
+        .contact-decoration-1, .contact-decoration-2 {
+            position: absolute;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .contact-decoration-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(26, 58, 108, 0.1) 0%, transparent 70%);
+            top: 5%;
+            left: -10%;
+        }
+
+        .contact-decoration-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, rgba(230, 176, 46, 0.08) 0%, transparent 70%);
+            bottom: 0;
+            right: -5%;
+        }
+
+        @media (max-width: 768px) {
+            .contact-map-container {
+                height: 220px;
+            }
+
+            .map-overlay {
+                padding: 1rem;
+            }
+
+            .location-pin {
+                font-size: 2rem;
+            }
+
+            .map-info h4 {
+                font-size: 1.2rem;
+            }
+
+            .map-info p {
+                font-size: 0.9rem;
+            }
+
+            .social-media-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="img/logo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">الرئيسية</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">من نحن</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#values">قيمنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#players">لاعبينا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#team">فريقنا</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">تواصل معنا</a>
+                </li>
+            </ul>
+            <div class="ms-3">
+                <button class="btn cta-button">انضم إلى الوكالة</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <div class="hero-content">
+                    <h1 class="hero-title">صنع <span class="highlight-text">المستقبل الرياضي</span> مع نخبة المواهب</h1>
+                    <p class="hero-subtitle">CYNQ Sport Agency هي وكالة رياضية سعودية مكرسة لتمكين اللاعبين داخل وخارج الملعب. نؤمن بإمكانات كل رياضي لتحقيق العظمة.</p>
+
+                    <div class="stats-container">
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">لاعب محترف</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">120+</div>
+                            <div class="stat-label">لقب وبطولة</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">8+</div>
+                            <div class="stat-label">سنوات خبرة</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-3 mt-4">
+                        <button class="cta-button">
+                            <i class="fas fa-user-plus ms-2"></i>انضم كلاعب
+                        </button>
+                        <a href="#players" class="btn btn-outline-light px-4 py-2" style="font-weight: bold">
+                            <i class="fas fa-futbol ms-2"></i>تصفح اللاعبين
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 d-none d-lg-block">
+                <!-- Placeholder for animated player graphics -->
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 position-relative overflow-hidden" id="about">
+    <div class="container" >
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0 animate-on-scroll">
+                <div class="position-relative">
+                    <div class="about-bg-shape"></div>
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="about-icon-container me-3">
+                            <i class="fas fa-trophy display-4 text-warning"></i>
+                        </div>
+                        <h2 class="section-title mb-0">من نحن</h2>
+                    </div>
+                    <p class="section-subtitle mb-4">وكالة رياضية سعودية مكرسة لتمكين اللاعبين داخل وخارج الملعب</p>
+
+                    <div class="about-content-box p-4 rounded-3 mb-4">
+                        <p class="fs-5 mb-0">
+                            <i class="fas fa-quote-left text-warning me-2"></i>
+                            CYNQ هي وكالة رياضية سعودية تأسست بهدف تمكين اللاعبين وتحقيق أقصى إمكاناتهم الرياضية والمهنية. نؤمن بأن كل لاعب يمتلك موهبة فريدة تستحق الدعم والرعاية لتحقيق النجاح المستدام.
+                        </p>
+                    </div>
+
+                    <div class="d-grid gap-3">
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 mt-1">
+                                <i class="fas fa-bullseye text-warning fs-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white mb-1">مهمتنا</h4>
+                                <p class="mb-0">نساعد اللاعبين على الوصول إلى إمكاناتهم الكاملة من خلال توفير الأدوات والتوجيه والفرص اللازمة لتحقيق النجاح في رياضتهم.</p>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-start">
+                            <div class="me-3 mt-1">
+                                <i class="fas fa-eye text-warning fs-4"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white mb-1">رؤيتنا</h4>
+                                <p class="mb-0">أن نصبح الوكالة الرياضية الرائدة في المملكة العربية السعودية، المعروفة بالتزامها بالتميز وتفانيها في نجاح لاعبينا.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 animate-on-scroll">
+                <div class="row g-3">
+                    <!-- Core Values Cards -->
+                    <div class="col-md-6">
+                        <div class="value-card bg-dark p-4 rounded-3 h-100 border border-warning border-2">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-balance-scale display-4 text-warning"></i>
+                            </div>
+                            <h4 class="text-warning mb-2">النزاهة</h4>
+                            <p class="mb-0">الصدق والشفافية والسلوك الأخلاقي في جميع تعاملاتنا مع اللاعبين والشركاء.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="value-card bg-dark p-4 rounded-3 h-100 border border-warning border-2 mt-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-crown display-4 text-warning"></i>
+                            </div>
+                            <h4 class="text-warning mb-2">التميز</h4>
+                            <p class="mb-0">نسعى للتميز في كل ما نقدمه، من مفاوضات العقود إلى التخطيط للمستقبل الوظيفي.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="value-card bg-dark p-4 rounded-3 h-100 border border-warning border-2 mt-4">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-users display-4 text-warning"></i>
+                            </div>
+                            <h4 class="text-warning mb-2">العمل الجماعي</h4>
+                            <p class="mb-0">التعاون مع اللاعبين والشركاء لإنشاء شبكة دعم قوية تحقق الأهداف المشتركة.</p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="value-card bg-dark p-4 rounded-3 h-100 border border-warning border-2 mt-5">
+                            <div class="value-icon mb-3">
+                                <i class="fas fa-lightbulb display-4 text-warning"></i>
+                            </div>
+                            <h4 class="text-warning mb-2">الابتكار</h4>
+                            <p class="mb-0">تبني أحدث الحلول والتقنيات لضمان حصول لاعبينا على أفضل الفرص في السوق الرياضي.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="about-decoration-1"></div>
+    <div class="about-decoration-2"></div>
+</section>
+
+<!-- Players Section -->
+<section class="py-5 bg-dark" id="players">
+    <div class="container">
+        <div class="section-title-container animate-on-scroll">
+            <h2 class="section-title">نخبة لاعبينا</h2>
+            <p class="section-subtitle">مجموعة من أفضل المواهب الرياضية التي نفخر بتمثيلها</p>
+        </div>
+
+        <div class="filters-container animate-on-scroll">
+            <div class="d-flex flex-wrap justify-content-center align-items-center">
+                <button class="filter-btn active">الكل</button>
+                <button class="filter-btn">كرة القدم</button>
+                <button class="filter-btn">كرة القدم النسائية</button>
+                <button class="filter-btn">الشباب</button>
+                <button class="filter-btn">المنتخبات</button>
+                <button class="filter-btn">الناشئين</button>
+            </div>
+        </div>
+
+        <div class="row player-container g-4">
+            <!-- Player 1: AbdulFattah Asiri -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <!-- الصورة الحقيقية للاعب -->
+                                <img src="img/player1.png"
+                                     alt="عبدالفتاح عسيري - لاعب كرة قدم"
+                                     class="player-image">
+                                <!-- فولباق في حالة عدم تحميل الصورة -->
+                                <div class="player-image-fallback" style="display: none;">
+                                    <i class="fas fa-user-alt player-placeholder"></i>
+                                </div>
+                            </div>
+                            <h3 class="player-name">عبدالفتاح عسيري</h3>
+                            <div class="player-position">مهاجم</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم</span>
+                                <span class="category-tag">المنتخب السعودي</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">30</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">167</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">63</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>بطل كأس السوبر السعودي 2021</li>
+                                <li>بطل كأس الملك 2013</li>
+                                <li>بطل كأس الملك 2012</li>
+                            </ul>
+
+                            <h4 class="section-label mt-3"><i class="fas fa-ad me-2 text-warning"></i>الرعايات</h4>
+                            <ul class="endorsements-list">
+                                <li>رعاية من Nike</li>
+                                <li>رعاية من STC</li>
+                            </ul>
+
+                            <div class="social-section">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">1.6M</div>
+                                        <div class="social-platform">@aboode1110</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </div>
+                                        <div class="social-count">154K</div>
+                                        <div class="social-platform">@aasiri45</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <style>
+                /* Player Image Styling */
+                .player-img-container {
+                    width: 180px;
+                    height: 180px;
+                    border-radius: 50%;
+                    margin: 0 auto 1.5rem;
+                    background: linear-gradient(135deg, rgba(26, 58, 108, 0.8) 0%, rgba(12, 26, 50, 0.9) 100%);
+                    border: 4px solid var(--secondary);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    overflow: hidden;
+                    position: relative;
+                    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+                    transition: all 0.4s ease;
+                }
+
+                .player-card:hover .player-img-container {
+                    transform: scale(1.05);
+                    box-shadow: 0 8px 25px rgba(230, 176, 46, 0.4);
+                }
+
+                .player-image {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    transition: all 0.5s ease;
+                }
+
+                .player-image-fallback {
+                    font-size: 5rem;
+                    color: rgba(230, 176, 46, 0.3);
+                }
+
+                /* Image loading states */
+                .player-img-container::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(45deg, rgba(230, 176, 46, 0.1), transparent);
+                    opacity: 0;
+                    animation: imageShine 1.5s ease-in-out forwards;
+                }
+
+                @keyframes imageShine {
+                    0% {
+                        opacity: 0;
+                        transform: translateX(-100%);
+                    }
+                    50% {
+                        opacity: 0.1;
+                    }
+                    100% {
+                        opacity: 0;
+                        transform: translateX(100%);
+                    }
+                }
+
+                /* For image error handling */
+                .player-image[style*="display:none"],
+                .player-image[style*="display: none"] {
+                    display: none !important;
+                }
+
+                /* Team badge styling for player cards */
+                .team-badge {
+                    position: absolute;
+                    bottom: 8px;
+                    left: 8px;
+                    background: rgba(12, 26, 50, 0.85);
+                    border: 1px solid var(--secondary);
+                    color: var(--secondary);
+                    padding: 3px 8px;
+                    border-radius: 12px;
+                    font-size: 0.75rem;
+                    font-weight: 600;
+                    z-index: 2;
+                }
+
+                /* National flag badge */
+                .national-flag {
+                    position: absolute;
+                    top: 8px;
+                    right: 8px;
+                    width: 30px;
+                    height: 20px;
+                    border-radius: 3px;
+                    background: linear-gradient(to bottom, #006C35, #FFFFFF, #CE1126);
+                    border: 1px solid rgba(255, 255, 255, 0.8);
+                    z-index: 2;
+                }
+
+                /* Responsive adjustments */
+                @media (max-width: 1200px) {
+                    .player-img-container {
+                        width: 160px;
+                        height: 160px;
+                    }
+                }
+
+                @media (max-width: 768px) {
+                    .player-img-container {
+                        width: 150px;
+                        height: 150px;
+                    }
+
+                    .player-card {
+                        height: 580px;
+                    }
+                }
+
+                @media (max-width: 576px) {
+                    .player-img-container {
+                        width: 140px;
+                        height: 140px;
+                    }
+
+                    .player-card {
+                        height: 620px;
+                    }
+                }
+            </style>
+            <!-- Player 2: Mahmoud Bureh -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <i class="fas fa-futbol player-placeholder"></i>
+                            </div>
+                            <h3 class="player-name">محمود بريه</h3>
+                            <div class="player-position">حارس مرمى</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم</span>
+                                <span class="category-tag">الشباب</span>
+                                <span class="category-tag">المنتخبات</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">18</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">177</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">74</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>بطل WAFF U19 لعام 2024</li>
+                                <li>أفضل حارس في WAFF U19 2024</li>
+                                <li>أفضل حارس في WAFF U17 2021</li>
+                            </ul>
+
+                            <div class="d-flex justify-content-around mt-3 text-center">
+                                <div>
+                                    <div class="stat-value">13</div>
+                                    <div class="stat-label">مباريات المنتخب</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value">23</div>
+                                    <div class="stat-label">مباريات النادي</div>
+                                </div>
+                                <div>
+                                    <div class="stat-value">55</div>
+                                    <div class="stat-label">شباك نظيفة</div>
+                                </div>
+                            </div>
+
+                            <div class="social-section mt-3">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">30</div>
+                                        <div class="social-platform">@mbureh.17</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 3: Menna Tarek -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم النسائية">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <i class="fas fa-futbol player-placeholder"></i>
+                            </div>
+                            <h3 class="player-name">منى طارق</h3>
+                            <div class="player-position">مهاجم</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم النسائية</span>
+                                <span class="category-tag">كرة الصالات</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">25</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">168</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">53</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>أفضل هدافة في بطولة كرة الصالات 2024</li>
+                                <li>بطل كأس مصر للسيدات 2021</li>
+                                <li>بطل الدوري المصري الممتاز 6 مرات (2015-2018)</li>
+                                <li>بطل كأس مصر للسيدات 6 مرات (2015-2018)</li>
+                            </ul>
+
+                            <h4 class="section-label mt-3"><i class="fas fa-ad me-2 text-warning"></i>الرعايات</h4>
+                            <ul class="endorsements-list">
+                                <li>رعاية من Adidas</li>
+                            </ul>
+
+                            <div class="social-section">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">36K</div>
+                                        <div class="social-platform">@mennataarek11</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </div>
+                                        <div class="social-count">500</div>
+                                        <div class="social-platform">@mennatarek74</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon facebook">
+                                            <i class="fab fa-facebook"></i>
+                                        </div>
+                                        <div class="social-count">20K</div>
+                                        <div class="social-platform">@mennatareek11</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 4: Sara Khalid -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم النسائية">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <i class="fas fa-futbol player-placeholder"></i>
+                            </div>
+                            <h3 class="player-name">سارة خالد</h3>
+                            <div class="player-position">حارس مرمى</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم النسائية</span>
+                                <span class="category-tag">المنتخب السعودي</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">28</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">165</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">59</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>بطل الدوري السعودي الممتاز 2024</li>
+                                <li>بطل الدوري السعودي الممتاز 2023</li>
+                                <li>بطل بطولة ودية دولية 2023</li>
+                                <li>بطل الدوري الوطني السعودي 2022</li>
+                                <li>أفضل حارس مرمى في الدوري الوطني 2022</li>
+                            </ul>
+
+                            <h4 class="section-label mt-3"><i class="fas fa-ad me-2 text-warning"></i>الرعايات</h4>
+                            <ul class="endorsements-list">
+                                <li>رعاية من Nike</li>
+                            </ul>
+
+                            <div class="social-section">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">11K</div>
+                                        <div class="social-platform">@sara.khalidgk</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 5: Talah Alghamdi -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم النسائية">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <i class="fas fa-futbol player-placeholder"></i>
+                            </div>
+                            <h3 class="player-name">تالا الغامدي</h3>
+                            <div class="player-position">لاعب وسط</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم النسائية</span>
+                                <span class="category-tag">المنتخب السعودي</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">28</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">165</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">59</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>بطل بطولة ودية دولية 2023</li>
+                                <li>بطل منطقة SAFF الغربية 2022</li>
+                            </ul>
+
+                            <h4 class="section-label mt-3"><i class="fas fa-ad me-2 text-warning"></i>الرعايات</h4>
+
+                            <div class="social-section">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">24K</div>
+                                        <div class="social-platform">@talah_alghamdi66</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon twitter">
+                                            <i class="fab fa-twitter"></i>
+                                        </div>
+                                        <div class="social-count">8.1K</div>
+                                        <div class="social-platform">@talahalghamdi66</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon">
+                                            <i class="fab fa-tiktok"></i>
+                                        </div>
+                                        <div class="social-count">8.7K</div>
+                                        <div class="social-platform">@Talahalgh</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Player 6: Zara Alsaif -->
+            <div class="col-md-6 col-lg-4 animate-on-scroll" data-category="كرة القدم النسائية">
+                <div class="player-card">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="player-img-container">
+                                <i class="fas fa-futbol player-placeholder"></i>
+                            </div>
+                            <h3 class="player-name">زارا السيف</h3>
+                            <div class="player-position">مهاجم</div>
+                            <div class="d-flex gap-2 mb-3">
+                                <span class="category-tag">كرة القدم النسائية</span>
+                            </div>
+                            <div class="player-stats">
+                                <div class="stat-box">
+                                    <div class="stat-value">30</div>
+                                    <div class="stat-label">العمر</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">154</div>
+                                    <div class="stat-label">سم</div>
+                                </div>
+                                <div class="stat-box">
+                                    <div class="stat-value">54</div>
+                                    <div class="stat-label">كجم</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4 class="section-label"><i class="fas fa-trophy me-2 text-warning"></i>الإنجازات</h4>
+                            <ul class="honors-list">
+                                <li>بطل GGWCUP 2022</li>
+                                <li>بطل بطولة الملك جبيل الرمضانية 2022</li>
+                            </ul>
+
+                            <h4 class="section-label mt-3"><i class="fas fa-ad me-2 text-warning"></i>الرعايات</h4>
+
+                            <div class="social-section">
+                                <h4 class="section-label"><i class="fas fa-share-alt me-2 text-warning"></i>وسائل التواصل</h4>
+                                <div class="social-grid">
+                                    <div class="social-item">
+                                        <div class="social-icon instagram">
+                                            <i class="fab fa-instagram"></i>
+                                        </div>
+                                        <div class="social-count">44K</div>
+                                        <div class="social-platform">@zaraxmars</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div class="social-icon">
+                                            <i class="fab fa-tiktok"></i>
+                                        </div>
+                                        <div class="social-count">80K</div>
+                                        <div class="social-platform">@zaraxmars</div>
+                                    </div>
+                                    <div class="social-item">
+                                        <div><i class="fas fa-heart text-danger"></i></div>
+                                        <div class="social-count">1.2M</div>
+                                        <div class="social-platform">إعجابات</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-4 animate-on-scroll">
+            <button class="btn btn-warning px-5 py-2 fw-bold">
+                تحميل المزيد من اللاعبين <i class="fas fa-sync-alt ms-2"></i>
+            </button>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 position-relative overflow-hidden" id="team">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center animate-on-scroll">
+                <div class="d-inline-block mb-4">
+                    <div class="team-badge px-4 py-2 rounded-pill">
+                        <i class="fas fa-users me-2"></i> الخبراء
+                    </div>
+                </div>
+                <h2 class="section-title">فريقنا الاستثنائي</h2>
+                <p class="section-subtitle">نخبة من المحترفين المتفانين في خدمة اللاعبين وتحقيق النجاح</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Team Mission Statement -->
+            <div class="col-12 animate-on-scroll">
+                <div class="team-mission bg-dark rounded-4 p-5 position-relative overflow-hidden">
+                    <div class="mission-decoration"></div>
+                    <div class="row align-items-center">
+                        <div class="col-lg-6 mb-4 mb-lg-0">
+                            <h3 class="text-warning display-6 fw-bold mb-3">فلسفتنا في بناء الفريق</h3>
+                            <p class="fs-5 mb-4">
+                                نؤمن بأن النجاح الحقيقي يبدأ بفريق عمل متميز. في CYNQ، نجمع بين الخبرات المتنوعة والمعارف العميقة لتقديم أفضل الدعم للاعبينا في كل مرحلة من مسيرتهم الرياضية.
+                            </p>
+                            <div class="d-flex align-items-center">
+                                <div class="me-3">
+                                    <i class="fas fa-medal text-warning fs-2"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-white mb-1">15+ سنة خبرة</h4>
+                                    <p class="text-muted mb-0">مجموع الخبرات العملية لفريقنا في المجال الرياضي</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="mission-stats d-flex flex-wrap justify-content-center">
+                                <div class="stat-item text-center p-3 m-2">
+                                    <div class="stat-number display-4 fw-bold text-warning">24</div>
+                                    <div class="stat-label text-white">خبير رياضي</div>
+                                </div>
+                                <div class="stat-item text-center p-3 m-2">
+                                    <div class="stat-number display-4 fw-bold text-warning">98%</div>
+                                    <div class="stat-label text-white">نسبة النجاح</div>
+                                </div>
+                                <div class="stat-item text-center p-3 m-2">
+                                    <div class="stat-number display-4 fw-bold text-warning">50+</div>
+                                    <div class="stat-label text-white">شريك استراتيجي</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Team Categories -->
+        <div class="row mt-5 g-4">
+            <div class="col-md-4 animate-on-scroll">
+                <div class="team-category-card rounded-4 overflow-hidden h-100">
+                    <div class="category-header p-4 text-center" style="background: linear-gradient(135deg, #1a2a4a 0%, #121b2d 100%);">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-user-tie display-3 text-warning"></i>
+                        </div>
+                        <h3 class="text-white fw-bold">وكلاء اللاعبين</h3>
+                        <p class="text-light mb-0">الخبراء في التفاوض وإدارة المسيرة المهنية</p>
+                    </div>
+                    <div class="category-content p-4 bg-dark">
+                        <p class="mb-3">
+                            <i class="fas fa-quote-left text-warning me-2"></i>
+                            فريقنا من الوكلاء يمتلك خبرة واسعة في السوق الرياضي السعودي والدولي، مما يتيح لهم التفاوض على أفضل العقود والشروط للاعبينا.
+                        </p>
+                        <ul class="team-features list-unstyled">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>خبراء في التفاوض على العقود المحلية والدولية</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>استراتيجيات تطوير المسيرة المهنية</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>حماية المصالح القانونية للاعبين</span>
+                            </li>
+                        </ul>
+                        <div class="team-count mt-3">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">8 وكلاء</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 animate-on-scroll">
+                <div class="team-category-card rounded-4 overflow-hidden h-100">
+                    <div class="category-header p-4 text-center" style="background: linear-gradient(135deg, #1a2a4a 0%, #121b2d 100%);">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-bullhorn display-3 text-warning"></i>
+                        </div>
+                        <h3 class="text-white fw-bold">التسويق والرعاية</h3>
+                        <p class="text-light mb-0">صنّاع الفرص والشراكات الناجحة</p>
+                    </div>
+                    <div class="category-content p-4 bg-dark">
+                        <p class="mb-3">
+                            <i class="fas fa-quote-left text-warning me-2"></i>
+                            نعمل على بناء سمعة قوية لللاعبين ونفتح أمامهم أبواب الفرص التجارية والتسويقية، مما يضمن لهم وجوداً مؤثراً داخل وخارج الملعب.
+                        </p>
+                        <ul class="team-features list-unstyled">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>إدارة صورة اللاعب وتطوير قيمته التسويقية</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>تأمين شراكات استراتيجية مع كبرى العلامات التجارية</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>إدارة وسائل التواصل الاجتماعي وزيادة التفاعل</span>
+                            </li>
+                        </ul>
+                        <div class="team-count mt-3">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">6 خبراء</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 animate-on-scroll">
+                <div class="team-category-card rounded-4 overflow-hidden h-100">
+                    <div class="category-header p-4 text-center" style="background: linear-gradient(135deg, #1a2a4a 0%, #121b2d 100%);">
+                        <div class="category-icon mb-3">
+                            <i class="fas fa-brain display-3 text-warning"></i>
+                        </div>
+                        <h3 class="text-white fw-bold">التطوير المهني</h3>
+                        <p class="text-light mb-0">مُعدين للمستقبل بعد الرياضة</p>
+                    </div>
+                    <div class="category-content p-4 bg-dark">
+                        <p class="mb-3">
+                            <i class="fas fa-quote-left text-warning me-2"></i>
+                            نساعد اللاعبين في بناء مسيرة مهنية مستدامة تبدأ خلال النشاط الرياضي وتستمر بعده، مع التركيز على التعليم والتطوير الذاتي والاستثمار.
+                        </p>
+                        <ul class="team-features list-unstyled">
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>التخطيط المالي والاستثماري طويل الأمد</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>برامج التعليم والتأهيل الجامعي</span>
+                            </li>
+                            <li class="d-flex align-items-start mb-2">
+                                <i class="fas fa-check-circle text-success mt-1 ms-2"></i>
+                                <span>التدريب على المهارات القيادية وريادة الأعمال</span>
+                            </li>
+                        </ul>
+                        <div class="team-count mt-3">
+                            <span class="badge bg-warning text-dark px-3 py-2 rounded-pill fw-bold">5 متخصصين</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="team-decoration-1"></div>
+    <div class="team-decoration-2"></div>
+</section>
+
+<!-- Contact Section - Redesigned -->
+<section class="py-5 position-relative overflow-hidden contact-section" id="contact">
+    <div class="container">
+        <div class="row mb-5">
+            <div class="col-12 text-center animate-on-scroll">
+                <div class="d-inline-block mb-4">
+                    <div class="contact-badge px-4 py-2 rounded-pill">
+                        <i class="fas fa-headset me-2"></i>تواصل مباشر
+                    </div>
+                </div>
+                <h2 class="section-title">تواصل معنا</h2>
+                <p class="section-subtitle">استعد لبدء مسيرتك الرياضية مع أفضل وكالة رياضية في المملكة</p>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <!-- Contact Information & Map -->
+            <div class="col-lg-6 animate-on-scroll">
+                <div class="contact-container rounded-4 overflow-hidden h-100">
+                    <div class="contact-map-container position-relative">
+                        <div class="map-placeholder">
+                            <div class="map-overlay">
+                                <div class="location-pin">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="map-info">
+                                    <h4 class="text-white fw-bold">مقرنا الرئيسي</h4>
+                                    <p class="text-light mb-0">برج المملكة، الرياض، المملكة العربية السعودية</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="map-gradient-overlay"></div>
+                    </div>
+
+                    <div class="contact-info p-4 bg-dark">
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="contact-card bg-dark-light rounded-3 p-4 h-100">
+                                    <div class="d-flex align-items-start">
+                                        <div class="contact-icon bg-primary-light rounded-circle p-3 me-4 mt-1">
+                                            <i class="fas fa-map-marker-alt fs-3 text-warning"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white mb-1">العنوان</h4>
+                                            <p class="text-light mb-0 fs-5">برج المملكة، الطابق 28، الرياض، المملكة العربية السعودية</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="contact-card bg-dark-light rounded-3 p-4 h-100">
+                                    <div class="d-flex align-items-start">
+                                        <div class="contact-icon bg-primary-light rounded-circle p-3 me-4 mt-1">
+                                            <i class="fas fa-phone-alt fs-3 text-warning"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white mb-1">الهاتف</h4>
+                                            <p class="text-light mb-2 fs-5">+966 11 123 4567</p>
+                                            <p class="text-light mb-0 fs-6">الفاكس: +966 11 123 4568</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div class="contact-card bg-dark-light rounded-3 p-4 h-100">
+                                    <div class="d-flex align-items-start">
+                                        <div class="contact-icon bg-primary-light rounded-circle p-3 me-4 mt-1">
+                                            <i class="fas fa-envelope fs-3 text-warning"></i>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-white mb-1">البريد الإلكتروني</h4>
+                                            <p class="text-light mb-1 fs-6">info@cynqsport.com</p>
+                                            <p class="text-light mb-0 fs-6">careers@cynqsport.com</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form - Enhanced -->
+            <div class="col-lg-6 animate-on-scroll">
+                <div class="contact-form-container rounded-4 overflow-hidden h-100">
+                    <div class="form-header p-4 " style="background: linear-gradient(135deg, #1a2a4a 0%, #121b2d 100%);">
+                        <h3 class="text-white fw-bold">أرسل لنا رسالة</h3>
+                        <p class="text-light mb-0">املأ النموذج وسنتواصل معك في أقرب وقت</p>
+                    </div>
+
+                    <div class="form-body p-4 bg-dark">
+                        <form class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-group position-relative">
+                                        <label for="firstName" class="form-label text-light small mb-1">الاسم الأول</label>
+                                        <input type="text" class="form-control form-control-lg bg-dark-light text-white border-primary-light" id="firstName" placeholder="أدخل اسمك الأول" required>
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال اسمك الأول
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group position-relative">
+                                        <label for="lastName" class="form-label text-light small mb-1">اسم العائلة</label>
+                                        <input type="text" class="form-control form-control-lg bg-dark-light text-white border-primary-light" id="lastName" placeholder="أدخل اسم عائلتك" required>
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال اسم العائلة
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group position-relative">
+                                        <label for="email" class="form-label text-light small mb-1">البريد الإلكتروني</label>
+                                        <input type="email" class="form-control form-control-lg bg-dark-light text-white border-primary-light" id="email" placeholder="أدخل بريدك الإلكتروني" required>
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال بريد إلكتروني صالح
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group position-relative">
+                                        <label for="phone" class="form-label text-light small mb-1">رقم الهاتف</label>
+                                        <div class="input-group">
+                                            <span class="input-group-text bg-dark-light border-primary-light text-warning">+966</span>
+                                            <input type="tel" class="form-control form-control-lg bg-dark-light text-white border-primary-light" id="phone" placeholder="5XXXXXXXX" pattern="[5][0-9]{8}" required>
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            يرجى إدخال رقم هاتف سعودي صالح
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="inquiryType" class="form-label text-light small mb-1">نوع الاستفسار</label>
+                                        <select class="form-select form-select-lg bg-dark-light text-white border-primary-light" id="inquiryType" required>
+                                            <option value="" selected disabled>اختر نوع الاستفسار</option>
+                                            <option value="player">لاعب/ـة</option>
+                                            <option value="sponsor">شركة رعاية</option>
+                                            <option value="general">استفسار عام</option>
+                                            <option value="career">وظائف شاغرة</option>
+                                            <option value="partnership">شراكات استراتيجية</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            يرجى اختيار نوع الاستفسار
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-group position-relative">
+                                        <label for="message" class="form-label text-light small mb-1">الرسالة</label>
+                                        <textarea class="form-control form-control-lg bg-dark-light text-white border-primary-light" id="message" rows="4" placeholder="اكتب رسالتك هنا..." required></textarea>
+                                        <div class="invalid-feedback">
+                                            يرجى كتابة الرسالة
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" value="" id="termsCheck" required>
+                                        <label class="form-check-label text-light small" for="termsCheck">
+                                            أوافق على <a href="#" class="text-warning text-decoration-underline">شروط الخصوصية</a> و<a href="#" class="text-warning text-decoration-underline">سياسة الاستخدام</a>
+                                        </label>
+                                        <div class="invalid-feedback">
+                                            يجب الموافقة على الشروط والأحكام
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-warning w-100 py-3 fs-5 fw-bold d-flex align-items-center justify-content-center">
+                                        <i class="fas fa-paper-plane me-2 fs-4"></i>
+                                        <span>إرسال الرسالة</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="form-footer bg-dark-light p-4 text-center">
+                        <div class="d-flex justify-content-center align-items-center">
+                            <i class="fas fa-shield-alt text-warning me-2 fs-4"></i>
+                            <p class="text-light mb-0">بياناتك آمنة معنا - نحن نلتزم بحماية معلوماتك الشخصية</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <!-- Contact CTA -->
+        <div class="row mt-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 text-center animate-on-scroll">
+                <div class="contact-cta rounded-4 p-5 bg-gradient">
+                    <div class="d-inline-block mb-3">
+                        <i class="fas fa-star display-3 text-warning"></i>
+                    </div>
+                    <h3 class="text-white display-6 fw-bold mb-3">هل أنت مستعد لخطوتك التالية؟</h3>
+                    <p class="text-light mb-4 fs-5">سواء كنت لاعبًا طموحًا تبحث عن وكالة تدعمك، أو شريكًا تجاريًا تبحث عن فرص تعاون، نحن هنا لمساعدتك في تحقيق أهدافك.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <button class="btn btn-warning px-4 py-2 fw-bold fs-5">
+                            <i class="fas fa-user-plus me-2"></i>انضم كلاعب
+                        </button>
+                        <button class="btn btn-outline-warning px-4 py-2 fw-bold fs-5">
+                            <i class="fas fa-handshake me-2"></i>شراكات تجارية
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="contact-decoration-1"></div>
+    <div class="contact-decoration-2"></div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="footer_logo">
+                    <a class="footer_logo" href="#">
+                        <img src="img/logo.png">
+                    </a>
+                </div>
+
+                <p class="mb-4">وكالة رياضية سعودية مكرسة لتمكين اللاعبين داخل وخارج الملعب. نؤمن بإمكانات كل رياضي لتحقيق العظمة.</p>
+                <div class="social-footer">
+                    <a href="#" class="social-footer-icon"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-footer-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-footer-icon"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-footer-icon"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-footer-icon"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="footer-title">الروابط</h5>
+                <ul class="footer-links">
+                    <li><a href="#home">الصفحة الرئيسية</a></li>
+                    <li><a href="#about">مـن نـحـن</a></li>
+                    <li><a href="#values">قـيـمـنـا</a></li>
+                    <li><a href="#players">لاعـبـيـنـا</a></li>
+                    <li><a href="#team">فـريـقـنـا</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4">
+                <h5 class="footer-title">تواصل معنا</h5>
+                <ul class="footer-links">
+                    <li><a href="#"><i class="fas fa-map-marker-alt me-2"></i> الرياض، المملكة العربية السعودية</a></li>
+                    <li><a href="#"><i class="fas fa-phone me-2"></i> +966 11 123 4567</a></li>
+                    <li><a href="#"><i class="fas fa-envelope me-2"></i> info@cynqsport.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 CYNQ Sport Agency. جميع الحقوق محفوظة.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scroll to top button -->
+<div class="scroll-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
+<!-- JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    // Form validation
+    (function() {
+        'use strict'
+        const forms = document.querySelectorAll('.needs-validation')
+
+        Array.prototype.slice.call(forms).forEach(function(form) {
+            form.addEventListener('submit', function(event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                // Show success message after validation
+                if (form.checkValidity()) {
+                    event.preventDefault();
+                    const submitButton = form.querySelector('button[type="submit"]');
+                    const originalText = submitButton.innerHTML;
+
+                    // Show loading state
+                    submitButton.disabled = true;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>جاري الإرسال...';
+
+                    // Simulate form submission
+                    setTimeout(() => {
+                        // Reset form
+                        form.reset();
+
+                        // Show success message
+                        const successMessage = document.createElement('div');
+                        successMessage.className = 'alert alert-success mt-3 fade show';
+                        successMessage.innerHTML = '<i class="fas fa-check-circle me-2"></i>تم إرسال رسالتك بنجاح! سنرد عليك في أقرب وقت.';
+                        form.parentElement.insertBefore(successMessage, form.nextSibling);
+
+                        // Reset button
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalText;
+
+                        // Hide success message after 5 seconds
+                        setTimeout(() => {
+                            successMessage.classList.remove('show');
+                        }, 5000);
+                    }, 1500);
+                }
+
+                form.classList.add('was-validated');
+            }, false)
+        })
+    })();
+
+    // Form interactions
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInput = document.getElementById('phone');
+
+        // Phone number formatting
+        phoneInput.addEventListener('input', function(e) {
+            // Allow only numbers
+            this.value = this.value.replace(/[^0-9]/g, '');
+
+            // Limit to 9 digits (Saudi number format)
+            if (this.value.length > 9) {
+                this.value = this.value.slice(0, 9);
+            }
+        });
+
+        // Auto-focus on the next field when phone number is complete
+        phoneInput.addEventListener('keyup', function(e) {
+            if (this.value.length === 9) {
+                document.getElementById('inquiryType').focus();
+            }
+        });
+
+        // Form field animations
+        const formFields = document.querySelectorAll('.form-control, .form-select');
+        formFields.forEach(field => {
+            field.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            field.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+
+            // Initialize focused state for fields with values
+            if (field.value) {
+                field.parentElement.classList.add('focused');
+            }
+        });
+    });
+</script>
+<script>
+    // Initialize AOS animations
+    AOS.init({
+        duration: 1000,
+        once: true,
+        easing: 'ease-in-out'
+    });
+
+    // Scroll to top button
+    const scrollToTopBtn = document.querySelector('.scroll-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+            scrollToTopBtn.classList.add('visible');
+        } else {
+            scrollToTopBtn.classList.remove('visible');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Filter buttons functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const playerCards = document.querySelectorAll('.player-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+
+                const category = this.textContent;
+
+                playerCards.forEach(card => {
+                    const parent = card.closest('[data-category]');
+
+                    if (category === 'الكل' || parent.getAttribute('data-category') === category) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    } else {
+                        card.style.opacity = '0.3';
+                        card.style.transform = 'translateY(20px)';
+                    }
+                });
+            });
+        });
+
+        // Animate cards on scroll
+        const animateCards = () => {
+            const cards = document.querySelectorAll('.animate-on-scroll');
+            cards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+
+                if (cardPosition < screenPosition) {
+                    card.classList.add('visible');
+                }
+            });
+        };
+
+        // Initial check
+        animateCards();
+
+        // Check on scroll
+        window.addEventListener('scroll', animateCards);
+    });
+
+    // Floating animation for player placeholder icons
+    document.addEventListener('DOMContentLoaded', function() {
+        const placeholders = document.querySelectorAll('.player-placeholder');
+        placeholders.forEach(placeholder => {
+            placeholder.classList.add('floating');
+        });
+    });
+</script>
+</body>
+</html>
