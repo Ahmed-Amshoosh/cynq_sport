@@ -1270,45 +1270,532 @@
 
 <!-- Hero Section -->
 <section class="hero-section" id="home">
-    <div class="container">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@800;900&display=swap');
+
+        :root {
+            --primary: #d32f2f;
+            --dark: #0c0f17;
+            --light: #ffffff;
+            --energy: rgba(211, 47, 47, 0.8);
+            --wave: rgba(211, 47, 47, 0.25);
+        }
+
+        .hero-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--dark);
+            overflow: hidden;
+            font-family: 'Cairo', sans-serif;
+            padding: 5rem 0;
+            isolation: isolate;
+        }
+
+        /* Energy wave background */
+        .energy-waves {
+            position: absolute;
+            inset: 0;
+            z-index: -2;
+        }
+
+        .wave {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background:
+                    radial-gradient(circle at 10% 20%, var(--wave) 0%, transparent 40%),
+                    radial-gradient(circle at 90% 80%, var(--wave) 0%, transparent 40%);
+            animation: waveMotion 25s linear infinite;
+            opacity: 0.7;
+        }
+
+        .wave-1 { animation-delay: 0s; }
+        .wave-2 { animation-delay: -8s; opacity: 0.5; }
+        .wave-3 { animation-delay: -16s; opacity: 0.3; }
+
+        @keyframes waveMotion {
+            0% { transform: translateX(0) rotate(0deg); }
+            100% { transform: translateX(-50%) rotate(5deg); }
+        }
+
+        /* Momentum particle system */
+        .momentum-field {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+
+
+        .crown-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 25px;
+            background: linear-gradient(90deg, #d4af37, #ffd700);
+            border-radius: 12px 12px 0 0;
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+        }
+
+        .crown-point {
+            position: absolute;
+            bottom: 25px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 25px solid #ffd700;
+            filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8));
+        }
+
+        .crown-point:nth-child(1) { left: 20%; transform: rotate(-15deg); }
+        .crown-point:nth-child(2) { left: 40%; }
+        .crown-point:nth-child(3) { left: 60%; }
+        .crown-point:nth-child(4) { left: 80%; transform: rotate(15deg); }
+
+        .crown-gem {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: #d32f2f;
+            border-radius: 50%;
+            top: 35px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(211, 47, 47, 0.9);
+            animation: pulseGem 1.5s infinite;
+        }
+
+        @keyframes pulseGem {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.2); }
+        }
+
+        @keyframes crownReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content container */
+        .victory-content {
+            position: relative;
+            z-index: 3;
+            max-width: 680px;
+            padding-right: 30px;
+        }
+
+        .victory-title {
+            font-size: 4.2rem;
+            font-weight: 900;
+            line-height: 1.5;
+            color: var(--light);
+            margin-bottom: 1.3rem;
+            text-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .victory-title span {
+            position: relative;
+            display: inline-block;
+            animation: textSlide 0.9s ease-out forwards;
+            opacity: 0;
+        }
+
+        .victory-title span:nth-child(1) { animation-delay: 0.2s; }
+        .victory-title span:nth-child(2) { animation-delay: 0.3s; }
+        .victory-title span:nth-child(3) { animation-delay: 0.4s; }
+        .victory-title span:nth-child(4) { animation-delay: 0.5s; }
+        .victory-title span:nth-child(5) { animation-delay: 0.6s; }
+        .victory-title span:nth-child(6) { animation-delay: 0.7s; }
+
+        @keyframes textSlide {
+            0% { opacity: 0; transform: translateY(30px) skewY(15deg); }
+            100% { opacity: 1; transform: translateY(0) skewY(0); }
+        }
+
+        .highlight-momentum {
+            position: relative;
+            color: #ff8a8a;
+            display: inline-block;
+        }
+
+        .highlight-momentum::after {
+            content: '';
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+            box-shadow: 0 0 12px var(--energy);
+            animation: momentumLine 1.5s ease-out forwards;
+            transform-origin: left;
+            transform: scaleX(0);
+        }
+
+        @keyframes momentumLine {
+            to { transform: scaleX(1); }
+        }
+
+        .victory-subtitle {
+            font-size: 1.45rem;
+            color: rgba(255, 255, 255, 0.92);
+            line-height: 1.6;
+            margin-bottom: 2.8rem;
+            font-weight: 300;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: contentFade 0.8s ease-out 1.2s forwards;
+        }
+
+        @keyframes contentFade {
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Momentum stats */
+        .momentum-stats {
+            display: flex;
+            gap: 2.5rem;
+            margin: 2.8rem 0 2.2rem;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: statsSlide 0.8s ease-out 1.6s forwards;
+        }
+
+        @keyframes statsSlide {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .stat-item {
+            text-align: center;
+            min-width: 130px;
+            position: relative;
+        }
+
+        .stat-number {
+            font-size: 3.4rem;
+            font-weight: 900;
+            color: var(--light);
+            line-height: 1;
+            margin-bottom: 8px;
+            font-family: 'Courier New', monospace;
+            text-shadow: 0 0 15px var(--energy);
+            position: relative;
+        }
+
+        .stat-number::after {
+            content: '+';
+            position: absolute;
+            right: -15px;
+            top: 0;
+            font-size: 1.8rem;
+            color: #ff8a8a;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 1.15rem;
+            font-weight: 500;
+        }
+
+        /* Momentum buttons */
+        .momentum-actions {
+            display: flex;
+            gap: 1.4rem;
+            margin-top: 1.8rem;
+            flex-wrap: wrap;
+        }
+
+        .momentum-btn {
+            position: relative;
+            padding: 16px 32px;
+            font-size: 1.25rem;
+            font-weight: 800;
+            border-radius: 60px;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            overflow: hidden;
+            z-index: 1;
+            min-width: 240px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.35);
+        }
+
+        .primary-momentum {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 6px 30px rgba(211, 47, 47, 0.5);
+        }
+
+        .secondary-momentum {
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .momentum-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, transparent 0%, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            transform: translateX(-100%);
+            transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        .momentum-btn:hover::before {
+            transform: translateX(100%);
+        }
+
+        .momentum-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(211, 47, 47, 0.6);
+        }
+
+        .primary-momentum:hover {
+            background: #b72222;
+        }
+
+
+        @keyframes pulseAnimation {
+            0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.5; }
+            70% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
+            100% { transform: translate(-50%, -50%) scale(2); opacity: 0; }
+        }
+
+
+
+        @media (max-width: 991px) {
+            .victory-title { font-size: 3rem; }
+            .victory-subtitle { font-size: 1.3rem; }
+            .stat-number { font-size: 2.8rem; }
+            .momentum-stats { gap: 1.5rem; }
+        }
+
+        @media (max-width: 767px) {
+            .victory-title { font-size: 2.5rem; }
+            .victory-subtitle { font-size: 1.15rem; }
+            .stat-number { font-size: 2.2rem; }
+            .momentum-actions { flex-direction: column; }
+            .momentum-btn { min-width: 100%; }
+            .momentum-stats { flex-wrap: wrap; gap: 1rem; }
+            .stat-item { min-width: 100px; }
+        }
+    </style>
+
+    <div class="energy-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <canvas class="momentum-field" id="momentumCanvas"></canvas>
+
+
+
+    <div class="container position-relative">
         <div class="row align-items-center">
             <div class="col-lg-7">
-                <div class="hero-content">
-                    <h1 class="hero-title">صنع <span class="highlight-text">المستقبل الرياضي</span> مع نخبة المواهب</h1>
-                    <p class="hero-subtitle">CYNQ Sport Agency هي وكالة رياضية سعودية مكرسة لتمكين اللاعبين داخل وخارج الملعب. نؤمن بإمكانات كل رياضي لتحقيق العظمة.</p>
+                <div class="victory-content">
+                    <h1 class="victory-title">
+                        طاقة<span > لا تنهى</span>
+                    </h1>
+                    <p class="victory-subtitle">
+                        CYNQ Sport Agency تطلق العنان لإمكاناتك الرياضية بمنهجية علمية واستراتيجيات مبتكرة. نحن نخلق الأبطال، لا نبحث عنهم.
+                    </p>
 
-                    <div class="stats-container">
+                    <div class="momentum-stats">
                         <div class="stat-item">
-                            <div class="stat-number">25+</div>
-                            <div class="stat-label">لاعب محترف</div>
+                            <div class="stat-number" id="championsCount">0</div>
+                            <div class="stat-label">أبطال</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">120+</div>
-                            <div class="stat-label">لقب وبطولة</div>
+                            <div class="stat-number" id="recordsCount">0</div>
+                            <div class="stat-label">أرقام قياسية</div>
                         </div>
                         <div class="stat-item">
-                            <div class="stat-number">8+</div>
-                            <div class="stat-label">سنوات خبرة</div>
+                            <div class="stat-number" id="yearsCount">0</div>
+                            <div class="stat-label">سنوات</div>
                         </div>
                     </div>
 
-                    <div class="d-flex flex-wrap gap-3 mt-4">
-                        <button class="cta-button">
-                            <i class="fas fa-user-plus ms-2"></i>انضم كلاعب
+                    <div class="momentum-actions">
+                        <button class="momentum-btn primary-momentum">
+                            <i class="fas fa-bolt"></i> اكتشف قوتك
                         </button>
-                        <a href="#players" class="btn btn-outline-light btn-gradient px-4 py-2 fw-bold">
-                            <i class="fas fa-futbol ms-2"></i>
-                            تصفح اللاعبين
-                        </a>
-
+                        <button class="momentum-btn secondary-momentum">
+                            <i class="fas fa-medal"></i> قصص النجاح
+                        </button>
                     </div>
                 </div>
             </div>
             <div class="col-lg-5 d-none d-lg-block">
-                <!-- Placeholder for animated player graphics -->
+                <!-- Energy visualization will be generated by JS -->
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Momentum particle system
+            const canvas = document.getElementById('momentumCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 4 + 2;
+                    this.speedX = (Math.random() - 0.5) * 2;
+                    this.speedY = (Math.random() - 0.5) * 2;
+                    this.color = `hsl(${Math.random() * 10 + 350}, 80%, 60%)`;
+                    this.opacity = Math.random() * 0.5 + 0.2;
+                    this.life = 100;
+                }
+
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.life -= 0.5;
+                    this.opacity = this.life / 100;
+
+                    // Wrap around screen edges
+                    if (this.x > canvas.width) this.x = 0;
+                    if (this.x < 0) this.x = canvas.width;
+                    if (this.y > canvas.height) this.y = 0;
+                    if (this.y < 0) this.y = canvas.height;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(211, 47, 47, ${this.opacity})`;
+                    ctx.shadowColor = '#d32f2f';
+                    ctx.shadowBlur = 8;
+                    ctx.fill();
+                }
+            }
+
+            const particles = [];
+            const particleCount = 80;
+
+            // Initialize particles
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle(
+                    Math.random() * canvas.width,
+                    Math.random() * canvas.height
+                ));
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                // Create energy flow effect
+                const centerX = canvas.width * 0.7;
+                const centerY = canvas.height * 0.6;
+
+                particles.forEach((particle, index) => {
+                    // Attract particles to center point
+                    const dx = centerX - particle.x;
+                    const dy = centerY - particle.y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 300) {
+                        particle.speedX += dx * 0.001;
+                        particle.speedY += dy * 0.001;
+                    }
+
+                    // Add repulsion between particles
+                    for (let j = index + 1; j < particles.length; j++) {
+                        const other = particles[j];
+                        const dx2 = particle.x - other.x;
+                        const dy2 = particle.y - other.y;
+                        const distance2 = Math.sqrt(dx2 * dx2 + dy2 * dy2);
+
+                        if (distance2 < 25) {
+                            particle.speedX += dx2 * 0.1;
+                            particle.speedY += dy2 * 0.1;
+                        }
+                    }
+
+                    // Reset particles that die
+                    if (particle.life <= 0) {
+                        particle.x = Math.random() * canvas.width;
+                        particle.y = Math.random() * canvas.height;
+                        particle.life = 100;
+                        particle.speedX = (Math.random() - 0.5) * 2;
+                        particle.speedY = (Math.random() - 0.5) * 2;
+                    }
+
+                    particle.update();
+                    particle.draw();
+                });
+
+                // Draw energy core
+                const gradient = ctx.createRadialGradient(centerX, centerY, 0, centerX, centerY, 60);
+                gradient.addColorStop(0, 'rgba(211, 47, 47, 0.9)');
+                gradient.addColorStop(0.7, 'rgba(211, 47, 47, 0.3)');
+                gradient.addColorStop(1, 'transparent');
+
+                ctx.beginPath();
+                ctx.arc(centerX, centerY, 60, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            // Stats counter animation
+            function animateCounters() {
+                const counters = [
+                    { el: document.getElementById('championsCount'), target: 42, start: 0 },
+                    { el: document.getElementById('recordsCount'), target: 187, start: 0 },
+                    { el: document.getElementById('yearsCount'), target: 9, start: 0 }
+                ];
+
+                function update() {
+                    let complete = true;
+
+                    counters.forEach(counter => {
+                        if (counter.start < counter.target) {
+                            counter.start += (counter.target - counter.start) * 0.08;
+                            counter.el.textContent = Math.floor(counter.start);
+                            complete = false;
+                        }
+                    });
+
+                    if (!complete) requestAnimationFrame(update);
+                }
+
+                setTimeout(update, 1800);
+            }
+
+            // Initialize animations
+            window.addEventListener('load', () => {
+                animateParticles();
+                animateCounters();
+            });
+
+            // Handle resize
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+        });
+    </script>
 </section>
 
 <section class="py-5 position-relative overflow-hidden" id="about">
