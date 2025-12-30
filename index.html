@@ -569,14 +569,6 @@
             padding-right: 1.2rem;
         }
 
-        .honors-list li::before {
-            content: "•";
-            color: var(--secondary);
-            font-weight: bold;
-            position: absolute;
-            right: 0;
-        }
-
         .social-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -887,6 +879,7 @@
         .footer_logo img{
             width: 100%;
         }
+        ::marker {display: none !important;}
     </style>
     <style>
         /* Player Image Container - تصميم جديد بالشكل المستطيل الطولي */
@@ -983,18 +976,48 @@
             font-size: 4rem;
             opacity: 0.3;
         }
-
-        /* علم المنتخب */
+        /* Saudi national flag - Base64 image */
         .national-flag {
+            position: absolute;
+            top: 6px;
+            right: 5px;
+            width: 46px;
+            /* height: 25px; */
+            /* border: 1px solid rgba(255, 255, 255, 0.8); */
+            border-radius: 2px;
+            /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2); */
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .national-flag img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+        /* علم المنتخب */
+        /* Saudi national flag */
+        .saudi-flag {
             position: absolute;
             top: 15px;
             right: 15px;
             width: 40px;
             height: 25px;
-            border-radius: 4px;
-            background: linear-gradient(to bottom, #006C35, #FFFFFF, #CE1126);
-            border: 2px solid white;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            background:
+                    linear-gradient(to right, #006C35 33%, white 33%, white 66%, #006C35 66%),
+                    radial-gradient(circle at 65% center, #006C35 35%, transparent 36%),
+                    conic-gradient(from 0deg at 65% center,
+                    #006C35 0deg, #006C35 30deg,
+                    transparent 30deg, transparent 150deg,
+                    #006C35 150deg, #006C35 180deg,
+                    transparent 180deg, transparent 300deg,
+                    #006C35 300deg, #006C35 330deg,
+                    transparent 330deg, transparent 360deg);
+            background-size: 100% 100%, 100% 100%, 100% 100%;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            border-radius: 2px;
             z-index: 3;
         }
 
@@ -1113,13 +1136,6 @@
             padding-right: 1.2rem;
         }
 
-        .honors-list li::before {
-            content: "•";
-            color: var(--secondary);
-            font-weight: bold;
-            position: absolute;
-            right: 0;
-        }
 
         .social-grid {
             display: grid;
@@ -1201,7 +1217,7 @@
                 height: 460px;
             }
 
-            .national-flag {
+            .saudi-flag {
                 width: 35px;
                 height: 22px;
             }
@@ -1218,7 +1234,7 @@
                 height: 440px;
             }
 
-            .national-flag {
+            .saudi-flag {
                 width: 30px;
                 height: 20px;
             }
@@ -1235,10 +1251,11 @@
 </head>
 <body>
 <!-- Navigation Bar -->
-<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+<!-- Transparent Navbar -->
+<nav class="navbar navbar-expand-lg navbar-dark transparent-navbar sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">
-            <img src="img/logo.png">
+            <img src="img/logo.png" style="height: 40px;">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -1262,11 +1279,219 @@
                 </li>
             </ul>
             <div class="ms-3">
-                <button class="btn cta-button">انضم إلى الوكالة</button>
+                <button class="btn cta-button navbar-cta">انضم إلى الوكالة</button>
             </div>
         </div>
     </div>
 </nav>
+
+<style>
+    /* Transparent navbar styles */
+    .transparent-navbar {
+        background: transparent;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        padding: 15px 0;
+        position: absolute;
+        width: 100%;
+        border: none;
+        box-shadow: none;
+    }
+
+    .transparent-navbar.scrolled {
+        background: linear-gradient(135deg, #1a2332 0%, #121a28 100%);
+        padding: 10px 0;
+        position: sticky;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.2s;
+    }
+
+    .navbar-brand img {
+        transition: all 0.3s ease;
+    }
+
+    .transparent-navbar.scrolled .navbar-brand img {
+        height: 50px !important;
+    }
+
+    .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        position: relative;
+    }
+
+    .transparent-navbar:not(.scrolled) .nav-link {
+        color: rgba(255, 255, 255, 0.9) !important;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-link:hover, .nav-link.active {
+        color: #d32f2f !important;
+    }
+
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        width: 0;
+        height: 2px;
+        background: #d32f2f;
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    .transparent-navbar.scrolled .nav-link {
+        color: rgba(255, 255, 255, 0.85) !important;
+        text-shadow: none;
+    }
+
+    .transparent-navbar.scrolled .nav-link:hover,
+    .transparent-navbar.scrolled .nav-link.active {
+        color: #ff8a8a !important;
+    }
+
+    .cta-button.navbar-cta {
+        background: linear-gradient(90deg, #d32f2f 0%, #f44336 100%);
+        color: white;
+        font-weight: 700;
+        padding: 8px 20px;
+        font-size: 0.95rem;
+        border-radius: 30px;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 15px rgba(211, 47, 47, 0.4);
+    }
+
+    .transparent-navbar:not(.scrolled) .cta-button.navbar-cta {
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .cta-button.navbar-cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(211, 47, 47, 0.6);
+    }
+
+    .transparent-navbar.scrolled .cta-button.navbar-cta:hover {
+        background: #b72222;
+    }
+
+    /* Hero section background adjustment */
+    .hero-section {
+        height: 100vh;
+        min-height: 800px;
+        padding-top: 80px; /* Space for the navbar */
+    }
+
+    @media (max-width: 991px) {
+        .hero-section {
+            padding-top: 70px;
+        }
+
+        .transparent-navbar.scrolled {
+            padding: 8px 0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .hero-section {
+            padding-top: 60px;
+        }
+
+        .transparent-navbar {
+            padding: 10px 0;
+        }
+
+        .transparent-navbar.scrolled {
+            padding: 8px 0;
+        }
+
+        .cta-button.navbar-cta {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .ms-3 {
+            width: 100%;
+        }
+    }
+
+    .navbar-toggler {
+        border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    .navbar-toggler-icon {
+        background-image: url("image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+
+    .transparent-navbar.scrolled .navbar-toggler-icon {
+        background-image: url("image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.7)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const navbar = document.querySelector('.transparent-navbar');
+        const heroSection = document.querySelector('.hero-section');
+        const scrollThreshold = 100; // px
+
+        function handleScroll() {
+            const scrollY = window.scrollY;
+
+            if (scrollY > scrollThreshold) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            // Adjust hero section padding based on navbar height
+            const navbarHeight = navbar.offsetHeight;
+            heroSection.style.paddingTop = `${navbarHeight}px`;
+        }
+
+        // Initial check
+        handleScroll();
+
+        // Scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Resize event listener
+        window.addEventListener('resize', handleScroll);
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navbarHeight = document.querySelector('.transparent-navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight + 10;
+
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Update navbar on load
+        window.addEventListener('load', function() {
+            setTimeout(handleScroll, 300);
+        });
+    });
+</script>
 
 <!-- Hero Section -->
 <section class="hero-section" id="home">
@@ -1477,15 +1702,18 @@
             position: relative;
         }
 
+        .hero-section .stat-number {
+            text-shadow: 0 0 15px var(--energy);
+        }
         .stat-number {
             font-size: 3.4rem;
             font-weight: 900;
             color: var(--light);
             line-height: 1;
             margin-bottom: 8px;
-            text-shadow: 0 0 15px var(--energy);
             position: relative;
         }
+
 
         .stat-number::after {
             content: '+';
@@ -1497,7 +1725,6 @@
         }
 
         .stat-label {
-            color: rgba(255, 255, 255, 0.85);
             font-size: 1.15rem;
             font-weight: 500;
         }
@@ -1589,17 +1816,12 @@
             .stat-item { min-width: 100px; }
         }
     </style>
-
     <div class="energy-waves">
         <div class="wave wave-1"></div>
         <div class="wave wave-2"></div>
         <div class="wave wave-3"></div>
     </div>
-
     <canvas class="momentum-field" id="momentumCanvas"></canvas>
-
-
-
     <div class="container position-relative">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -1614,15 +1836,15 @@
                     <div class="momentum-stats">
                         <div class="stat-item">
                             <div class="stat-number" id="championsCount">0</div>
-                            <div class="stat-label">أبطال</div>
+                            <div class="stat-label text-white">أبطال</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number" id="recordsCount">0</div>
-                            <div class="stat-label">أرقام قياسية</div>
+                            <div class="stat-label text-white">أرقام قياسية</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-number" id="yearsCount">0</div>
-                            <div class="stat-label">سنوات</div>
+                            <div class="stat-label text-white">سنوات</div>
                         </div>
                     </div>
 
@@ -1641,7 +1863,6 @@
             </div>
         </div>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Momentum particle system
@@ -1930,7 +2151,12 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="المنتخب السعودي"></div>
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
 
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
@@ -2017,7 +2243,12 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="المنتخب السعودي"></div>
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
 
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
@@ -2107,7 +2338,12 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="منتخب مصر"></div>
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
 
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
@@ -2201,7 +2437,12 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="المنتخب السعودي"></div>
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
 
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
@@ -2282,7 +2523,12 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="المنتخب السعودي"></div>
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
 
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
@@ -2371,8 +2617,13 @@
                                 <div class="image-gradient-overlay"></div>
 
                                 <!-- علم المنتخب -->
-                                <div class="national-flag" title="المنتخب السعودي"></div>
 
+                                <div class="national-flag" title="المنتخب السعودي">
+                                    <img src="img/Flag.png"
+                                         alt="علم السعودية"
+                                         width="40"
+                                         height="25">
+                                </div>
                                 <!-- مؤشر التحميل -->
                                 <div class="image-loader">
                                     <div class="spinner"></div>
