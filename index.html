@@ -958,6 +958,13 @@
                 display: none !important;
             }
         }
+        @media (max-width: 500px) {
+            .p-4 {
+                padding: 13px !important;
+            }
+            .team-mission{padding: 1rem !important;}
+            .player-stats {margin-top: 0.5rem !important;gap: 10px}
+        }
 
         /* تحسين الأداء */
         .cursor-follower {
@@ -1344,9 +1351,14 @@
         <a class="navbar-brand" href="#">
             <img src="img/logo.png" style="height: 40px;">
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" stroke="white" stroke-width="2">
+                <line x1="4" y1="7" x2="26" y2="7" />
+                <line x1="4" y1="15" x2="26" y2="15" />
+                <line x1="4" y1="23" x2="26" y2="23" />
+            </svg>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -1506,7 +1518,7 @@
         }
 
         .ms-3 {
-            width: 100%;
+
         }
     }
 
